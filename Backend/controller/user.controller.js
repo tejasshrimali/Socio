@@ -24,7 +24,7 @@ const createUser = async (req, res) => {
     });
     res.status(200).json({ success: true, message: "User created succesfully", data: user });
   } catch (error) {
-    res.status(500).json({ message: error, success: false });
+    res.status(500).json({ message: error.message, success: false });
   }
 };
 
