@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 dotenv.config();
 const createAccessToken = (id) => {
   return jwt.sign({ id }, process.env.ACCESS_TOKEN_KEY, {
-    expiresIn: "15s",
+    expiresIn: "3d",
   });
 };
 

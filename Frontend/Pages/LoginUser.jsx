@@ -1,7 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
 
-import { Box, Button, Container, Heading, Input, VStack } from "@chakra-ui/react";
 const LoginUser = () => {
   const [user, setUser] = useState({
     name: "",
@@ -11,7 +9,7 @@ const LoginUser = () => {
 
   const loginUser = async (e) => {
     e.preventDefault();
-    const res = await fetch(`http://localhost:3000/api/userLogin/`, {
+    const res = await fetch(`/api/userLogin/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,8 +24,7 @@ const LoginUser = () => {
     <div className="user_login_container h-screen flex justify-center overflow-hidden">
       <div className="text-xl user_register">
         <h1 className="text-3xl mb-20 mt-10">Login into account</h1>
-           <Container></Container>
-   
+
         <input
           id="email"
           value={user.email}
@@ -52,7 +49,7 @@ const LoginUser = () => {
         <button onClick={loginUser} className="p-3 btn w-full rounded-md mb-8">
           Continue
         </button>
-       {/*   <p className="text-md">or signup with</p>
+        {/*   <p className="text-md">or signup with</p>
        <div className="other_signup_options flex flex-row justify-between mt-8">
           <div>Google</div>
           <div>Facenbook</div>

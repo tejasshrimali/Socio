@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./Backend/server.js npm run",
-    "dev":"cd frontend && npm run dev"
+    "start": "node ./Backend/server.js ",
+    "dev": "cd frontend && npm run dev"
   },
   "type": "module",
   "keywords": [],
@@ -20,6 +20,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.9.0",
     "mongoose": "^8.7.1",
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "zustand": "^5.0.1"
   }
 }

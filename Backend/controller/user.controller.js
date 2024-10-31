@@ -3,6 +3,7 @@ import User from "../models/User.model.js";
 import bcrypt from "bcrypt";
 import { createAccessToken, createRefreshToken } from "../utils/SecretToken.js";
 import Post from "../models/Post.model.js";
+import { userVerification } from "../Middleware/AuthMiddleware.js";
 
 const createUser = async (req, res) => {
   const { email } = req.body;
@@ -84,7 +85,7 @@ const getUsers = async (req, res) => {
 const logOutUser = async (req, res) => {
   res.clearCookie("refreshToken");
   res.clearCookie("accessToken");
-  res.status(200).json({ success: true, message: "Logout successfully" });
+  return res.status(200).json({ success: true, message: "Logout successfully" });
 };
 
 const getUserPosts = async (req, res) => {
@@ -99,10 +100,13 @@ const getUserPosts = async (req, res) => {
 };
 
 const getUserFeed = async (req, res) => {
+  // userVerification();
   const user = req.user;
   try {
     const posts = await Post.find({});
-    res.status(200).json({ success: true, message: `Hello ${user.name}, Here are today's posts`, post: posts });
+    res
+      .status(200)
+      .json({ success: true, message: `Hello ${user.name}, Here are today's posts`, user: user, post: posts });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }

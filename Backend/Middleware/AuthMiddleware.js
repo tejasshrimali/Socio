@@ -5,7 +5,7 @@ import { createAccessToken } from "../utils/SecretToken.js";
 
 dotenv.config();
 
-const userVerification = (req, res, next) => {
+const userVerification = (req, res) => {
   const accessToken = req.cookies.accessToken;
   if (!accessToken) {
     return res.status(404).json({ success: false, message: "Access token not found" });
@@ -14,11 +14,15 @@ const userVerification = (req, res, next) => {
     if (err) {
       return res.status(500).json({ message: err, success: false });
     } else {
-      const user = await User.findById(data.id);
-      req.user = user;
+      try {
+        const user = await User.findById(data.id);
+        return res
+          .status(200)
+          .json({ success: true, message: `Hello ${user.name}, Here are today's posts`, user: user });
+      } catch (error) {
+        return res.status(404).json({ success: false, message: "404 user not found" });
+      }
       //  console.log(user);
-      //  res.send(user.name);
-      next();
     }
   });
 };

@@ -2,24 +2,29 @@ import { useState } from "react";
 import axios from "axios";
 import { toast, Bounce, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { userStore } from "../src/Store/user.store.js";
 const RegisterUser = () => {
+  const nav = useNavigate();
+
   const [user, setUser] = useState({
     name: "",
     email: "",
     password: "",
   });
+  const { registerUser } = userStore();
+  const handleRegisterUser = async () => {
+    console.log(user);
+    // e.preventDefault();
+    // const res = await fetch(`http://localhost:3000/api/createUser/`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(user),
+    // });
 
-  const registerUser = async (e) => {
-    e.preventDefault();
-    const res = await fetch(`http://localhost:3000/api/createUser/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    });
-    const { success, message } = await res.json();
+    const { success, message } = await registerUser(user);
 
     if (!success) {
       toast.error(`${message}`, {
@@ -46,6 +51,7 @@ const RegisterUser = () => {
         icon: "no",
         transition: Bounce,
       });
+      nav("/");
     }
     console.log(`${success} ${message}`);
   };
@@ -88,7 +94,7 @@ const RegisterUser = () => {
             <Link to={"/login"}>login</Link>
           </span>
         </p>
-        <button onClick={registerUser} className="p-3 btn w-full rounded-md mb-8">
+        <button onClick={handleRegisterUser} className="p-3 btn w-full rounded-md mb-8">
           Continue
         </button>
         <p className="text-md">or signup with</p>
