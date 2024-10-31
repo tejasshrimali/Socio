@@ -2,23 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-  margin: 0;padding: 0;
-}
-body{
-  background-color: rgb(9, 0, 24);
-  color: white;
-  overflow: hidden;
-  font-family:Verdana;
-}
-
-.user_register>input{
-  background-color: rgb(208, 221, 252);
-  color: rgb(52, 52, 52);
-  box-shadow: 0 0 5px black;
-  
+:root {
+  --background: #0d1b2a;
+  --foreground: #1b263b;
+  --teritary: #778da9;
+  --secondary: #415a77;
+  --text: #e0e1dd;
+  --primary: #006fed;
 }
 
-.btn{
-  background-color: rgb(43, 117, 255);
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: var(--background);
+  color: var(--text);
+  overflow: scroll;
+  font-family: "Gill Sans", sans-serif;
+}
+
+.user_register,
+.createPost_prompt > input {
+  background-color: var(--secondary);
+  color: rgb(236, 236, 236);
+}
+
+.btn {
+  background-color: var(--primary);
+}
+
+.post_container {
+  background-color: var(--foreground);
+  color: var(--text);
+}
+
+.post_likes {
+  background-color: var(--background);
+}
+
+/* Styling for top navigation header */
+.home_topNavHeader {
+  background-color: var(--foreground);
 }

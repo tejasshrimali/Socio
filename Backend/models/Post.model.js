@@ -2,9 +2,8 @@ import mongoose from "mongoose";
 
 const PostSchema = mongoose.Schema(
   {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User", // Reference to the User model
+    author: {
+      type: String,
       required: true,
     },
     title: {
@@ -19,12 +18,10 @@ const PostSchema = mongoose.Schema(
     image: {
       type: String, // URL of the image if the post includes one
     },
-    likes: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User", // References to the users who liked the post
-      },
-    ],
+    likes: {
+      type: Number,
+      default: 0,
+    },
     comments: [
       {
         user: {

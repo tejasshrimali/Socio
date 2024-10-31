@@ -57,8 +57,8 @@ const RegisterUser = () => {
   };
 
   return (
-    <div className="user_register_container w-full flex justify-center ">
-      <div className="text-xl user_register ">
+    <div className="user_register_container w-full flex justify-center h-screen">
+      <div className="text-xl user_register h-fit ">
         <h1 className="text-3xl mb-20 mt-10">Create an account</h1>
 
         <input

@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { Link, useNavigate } from "react-router-dom";
 const LoginUser = () => {
   const [user, setUser] = useState({
     name: "",
@@ -7,6 +7,7 @@ const LoginUser = () => {
     password: "",
   });
 
+  const nav = useNavigate();
   const loginUser = async (e) => {
     e.preventDefault();
     const res = await fetch(`/api/userLogin/`, {
@@ -16,12 +17,16 @@ const LoginUser = () => {
       },
       body: JSON.stringify(user),
     });
+
     const { success, message } = await res.json();
+    if (success) {
+      nav("/");
+    }
     console.log(`${success} ${message}`);
   };
 
   return (
-    <div className="user_login_container h-screen flex justify-center overflow-hidden">
+    <div className="user_login_container flex justify-center h-screen">
       <div className="text-xl user_register">
         <h1 className="text-3xl mb-20 mt-10">Login into account</h1>
 
