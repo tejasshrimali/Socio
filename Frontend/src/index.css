@@ -22,7 +22,11 @@ body {
   font-family: "Gill Sans", sans-serif;
 }
 
-.user_register,
+.user_register > input {
+  background-color: var(--secondary);
+  color: rgb(236, 236, 236);
+}
+
 .createPost_prompt > input {
   background-color: var(--secondary);
   color: rgb(236, 236, 236);

@@ -26,7 +26,7 @@ const LoginUser = () => {
   };
 
   return (
-    <div className="user_login_container flex justify-center h-screen">
+    <div className="user_login_container flex justify-center">
       <div className="text-xl user_register">
         <h1 className="text-3xl mb-20 mt-10">Login into account</h1>
 

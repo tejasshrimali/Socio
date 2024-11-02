@@ -7,12 +7,14 @@ import TopNavHeader from "../src/Components/TopNavHeader";
 
 const HomePage = () => {
   const { user, isLoggedIn, verifyUser, logoutUser } = userStore();
+  // console.log(user);
   const { fetchPosts, posts } = postsStore();
   const handelUserCheck = async () => {
     const { success, message } = await verifyUser();
     if (!success) {
       console.log(success, message);
     }
+    //setUser(user);
   };
 
   const handleLogOut = async () => {
@@ -60,7 +62,7 @@ const HomePage = () => {
         </>
       ) : (
         <p>
-          New here?considering
+          New here? considering
           <Link to={"/register"} className="text-blue-500">
             joining us
           </Link>

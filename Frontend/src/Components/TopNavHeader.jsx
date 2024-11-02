@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const TopNavHeader = () => {
   return (
-    <div className="container home_topNavHeader p-3 h-fit grid w-full grid-cols-2 grid-rows-1 ">
+    <div className="home_topNavHeader p-4 h-fit grid  grid-cols-2 grid-rows-1 text-2xl mb-5 rounded-md ">
       <div className="justify-between justify-self-start flex gap-3">
         <div className="create">Logo</div>
         <div className="profile">Socio</div>

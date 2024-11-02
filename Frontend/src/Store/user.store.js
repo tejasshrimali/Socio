@@ -1,9 +1,9 @@
 import { create } from "zustand";
 
 export const userStore = create((set) => ({
-  user: null,
+  user: {},
   isLoggedIn: false,
-  setUser: (user) => set({ user: user }),
+  setUser: (userinfo) => set({ user: userinfo }),
   registerUser: async (userInfo) => {
     if (!userInfo.name || !userInfo.email || !userInfo.password) {
       return { success: false, message: "Please fill out all the fields" };
